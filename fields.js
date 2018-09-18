@@ -1,9 +1,9 @@
 import {LitElement, html} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 
-class BebuchFields extends LitElement {
+export class BebuchFields extends LitElement {
   static get properties() {
     return {
-      active: {type: Boolean},
+      editable: {type: Boolean},
       cols: {type: Number},
       rows: {type: Number}
     };
@@ -11,13 +11,13 @@ class BebuchFields extends LitElement {
 
   constructor() {
     super();
-    this.active = true;
+    this.editable = true;
     this.cols = 5;
     this.rows = 5;
   }
 
   nextCell(x, y){
-    if(!this.active) return;
+    if(!this.editable) return;
     this.fields[y][x] = (this.fields[y][x] + 1) % 4;
     this.update(this.fields[y][x]);
   }
